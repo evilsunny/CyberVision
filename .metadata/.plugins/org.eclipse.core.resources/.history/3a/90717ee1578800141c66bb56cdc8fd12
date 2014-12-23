@@ -1,0 +1,90 @@
+import java.util.Arrays;
+
+
+public class ListTest {
+	
+	int[] thisArray;
+	int size;
+	
+	ListTest(){
+		this.thisArray = new int[100];
+		this.size = 0;
+	}
+	
+	
+	int size(int[] array){
+	return this.size;
+	}
+	
+	boolean add(int value){
+		this.thisArray[size++] = value;
+		return true;
+	}
+	
+	boolean set(int value,int index){
+		this.thisArray[index] = value;
+		return true;
+	}
+	
+	boolean contains(int value){
+		boolean f = false;
+		for(int i = 0;i<size;i++){
+			if(this.thisArray[i] == value){
+				f=true;
+			}
+		}
+		
+		return f;
+	}
+	
+	int get(int index){
+		return this.thisArray[index];
+	}
+	
+	int indexOf(int value){
+		int index=0;
+		if(contains(value)){
+		for(int i = 0;i<size;i++){
+			if(this.thisArray[i]==value){
+				index = i;
+			}
+		}
+		}else{
+			index = -1;
+		}
+		return index;
+		
+	}
+	
+	boolean remove(int index){
+		for (int i = index;i<size;i++){
+			this.thisArray[i] = this.thisArray[i+1];
+		}
+		return true;
+	}
+	
+	boolean insert(int value,int index){
+		size++;
+		for ( int i = index+1;i<size;i++){
+			this.thisArray[i]= this.thisArray[i+1];
+		}
+		this.thisArray[index] = value;
+		return true;
+		
+	}
+	
+	void printList(){
+		System.out.println(Arrays.toString(this.thisArray));
+	}
+	public static void main(String[] args) {
+		ListTest t = new ListTest();
+		t.add(1);
+		t.add(4);
+		t.add(5);
+		t.printList();
+		System.out.println(t.size);
+		System.out.print(t.get(1));
+
+	}
+
+}

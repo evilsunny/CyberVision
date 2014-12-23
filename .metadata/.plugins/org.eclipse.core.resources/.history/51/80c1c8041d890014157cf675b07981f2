@@ -1,0 +1,15 @@
+
+public class Task2 {
+
+		
+	 static <T extends Number> T twice(T t){
+		 Number a = 2*t.doubleValue();
+		 return (T) a;
+		
+	 }
+	 
+	public static void main(String[] args) {
+		System.out.print(twice(10));
+	}
+
+}

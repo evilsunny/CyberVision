@@ -1,0 +1,79 @@
+
+public class LinkedListTest {
+
+	int size;
+	ListNode head;
+	
+	LinkedListTest(){
+		size = 0;
+		head = null;
+	}
+	
+	int size(){
+		return this.size;
+	}
+	
+	void add(int value){
+		ListNode e = new ListNode(value);
+		if(head==null){
+			head = e;
+		}else{
+			ListNode lastNode = head;
+			while(lastNode.next!=null){
+				lastNode = lastNode.next;
+			}
+			
+			lastNode.next = e;
+			
+		}
+		size++;
+	}
+	
+	boolean contains(int value){
+		boolean f;
+		if(head==null){
+			f =  false;
+		}else{	
+			ListNode thisNode = head;
+			while(thisNode.next!=null){
+				thisNode = thisNode.next;
+				if(thisNode.element==value){
+					f = true;
+				}
+			}
+		}
+		return f;
+	}
+	
+	
+	
+
+	
+	public static void main(String[] args) {
+		LinkedListTest t = new LinkedListTest();
+		t.add
+
+	}
+
+}
+
+class ListNode{
+	
+	int element;
+	ListNode next;
+	
+	ListNode(int theElement){
+		element = theElement;
+		next = null;
+	}
+	
+	ListNode( int theElement, ListNode n ) {
+
+        element = theElement;
+
+        next    = n;
+
+    }
+	
+
+}

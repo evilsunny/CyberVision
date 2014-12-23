@@ -1,0 +1,50 @@
+
+public class LinkedListTest {
+
+	int size;
+	ListNode head;
+	
+	LinkedListTest(){
+		size = 0;
+		head = new ListNode(0);
+	}
+	
+	int size(){
+		return this.size;
+	}
+	
+	void add(int value){
+		ListNode e = new ListNode(value);
+		
+	}
+	
+
+	
+	public static void main(String[] args) {
+		LinkedListTest t = new LinkedListTest();
+		t.add
+
+	}
+
+}
+
+class ListNode{
+	
+	int element;
+	ListNode next;
+	
+	ListNode(int theElement){
+		element = theElement;
+		next = null;
+	}
+	
+	ListNode( int theElement, ListNode n ) {
+
+        element = theElement;
+
+        next    = n;
+
+    }
+	
+
+}

@@ -1,0 +1,29 @@
+
+public class LinkedListTest {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+
+class ListNode{
+	Object element;
+	ListNode next;
+	
+	ListNode(Object theElement){
+		this.element = theElement;
+	}
+	
+	public ListNode( Object theElement, ListNode n ) {
+
+        element = theElement;
+
+        next    = n;
+
+    }
+}
