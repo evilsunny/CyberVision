@@ -10,8 +10,6 @@ public class HashSetTest<K> {
 	
 	void add(K key){
 			hashMap.put(key,o);
-
-		
 	}
 	
 	boolean contains(K key){

@@ -1,0 +1,35 @@
+package homework;
+
+public class TreeMapTest<K,V> {
+	
+	enum color{
+		BLACK,WHITE;	
+	}
+	
+	int size ;
+	
+	TreeMapTest(){
+		size = 0;
+	}
+	
+	
+
+	
+	class Node{
+		Node right;
+		Node left;
+		int color;//1-RED.2-BLACK
+		
+		Node(Comparable elem,Node r,Node l){
+			right = r;
+			left = l;
+			color = ;
+		}
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

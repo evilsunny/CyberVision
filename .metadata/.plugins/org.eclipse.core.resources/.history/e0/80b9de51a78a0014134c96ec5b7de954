@@ -1,0 +1,71 @@
+package homework;
+
+public class TreeMapTest<V> {
+
+	Node root;
+	
+	
+	TreeMapTest(Node rootNode){
+		root = rootNode;
+	}
+	
+	void addNode(Node to,int key){
+		if(key==to.key){
+			to.count++;		
+		}
+		
+
+	}
+	
+	void printTree(){
+		print(root);	
+	}
+	
+	void print(Node node){
+		if(node == null){
+			return;
+		}else{
+			print(node.left);
+			String s = node.key+" ";
+			s+=(node.isRed)? "red  " : "black  ";
+			if(node.parent!=null){
+				s+="parent: " + node.parent.key;
+			}
+			System.out.println(s);
+			print(node.right);
+		}
+	}
+	
+	
+
+	
+	class Node<K,V>{
+		
+		Node right;
+		Node left;
+		Node parent;
+		
+		int key;
+		V value;
+		
+		boolean isRed;
+		int count;
+		
+		Node(int thisKey,V thisValue){
+			key = thisKey;
+			value = thisValue;
+		}
+		
+		Node(int thisKey,V thisValue,Node par){
+			key = thisKey;
+			value = thisValue;
+			parent = par;
+		}
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
