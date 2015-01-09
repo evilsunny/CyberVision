@@ -120,19 +120,18 @@ public class RedBlackTree<K extends Comparable<K>,V> {
 
 
 	public void deleteMin() {
-		if (isEmpty()) //throw new NoSuchElementException("BST underflow");
+		if (isEmpty())
 		 return;
 
-		// if both children of root are black, set root to red
+
 		if (!isRed(root.left) && !isRed(root.right))
 			root.color = RED;
 
 		root = deleteMin(root);
 		if (!isEmpty()) root.color = BLACK;
-		// assert check();
+
 	}
 
-	// delete the key-value pair with the minimum key rooted at h
 	private Node deleteMin(Node h) {
 		if (h.left == null)
 			return null;
@@ -144,22 +143,18 @@ public class RedBlackTree<K extends Comparable<K>,V> {
 		return balance(h);
 	}
 
-
-	// delete the key-value pair with the maximum key
 	public void deleteMax() {
-		if (isEmpty())// throw new NoSuchElementException("BST underflow");
+		if (isEmpty())
 			return;
 
-		// if both children of root are black, set root to red
+
 		if (!isRed(root.left) && !isRed(root.right))
 			root.color = RED;
 
 		root = deleteMax(root);
 		if (!isEmpty()) root.color = BLACK;
-		// assert check();
 	}
 
-	// delete the key-value pair with the maximum key rooted at h
 	private Node deleteMax(Node h) {
 		if (isRed(h.left))
 			h = rotateRight(h);
@@ -175,24 +170,20 @@ public class RedBlackTree<K extends Comparable<K>,V> {
 		return balance(h);
 	}
 
-	// delete the key-value pair with the given key
 	public void delete(K key) {
 		if (!contains(key)) {
 			System.err.println("symbol table does not contain " + key);
 			return;
 		}
 
-		// if both children of root are black, set root to red
 		if (!isRed(root.left) && !isRed(root.right))
 			root.color = RED;
 
 		root = delete(root, key);
 		if (!isEmpty()) root.color = BLACK;
-		// assert check();
 	}
 
 	private Node delete(Node h, K key) {
-		// assert get(h, key) != null;
 
 		if (key.compareTo((K) h.key) < 0)  {
 			if (!isRed(h.left) && !isRed(h.left.left))
@@ -210,8 +201,6 @@ public class RedBlackTree<K extends Comparable<K>,V> {
 				Node x = min(h.right);
 				h.key = x.key;
 				h.value = x.value;
-				// h.val = get(h.right, min(h.right).key);
-				// h.key = min(h.right).key;
 				h.right = deleteMin(h.right);
 			}
 			else h.right = delete(h.right, key);
@@ -224,16 +213,14 @@ public class RedBlackTree<K extends Comparable<K>,V> {
 		return min(root).key;
 	}
 
-	// the smallest key in subtree rooted at x; null if no such key
 	private Node min(Node x) {
-		// assert x != null;
+
 		if (x.left == null) return x;
 		else                return min(x.left);
 	}
 
 	private Node moveRedLeft(Node h) {
-		// assert (h != null);
-		// assert isRed(h) && !isRed(h.left) && !isRed(h.left.left);
+
 
 		flipColors(h);
 		if (isRed(h.right.left)) {
@@ -244,11 +231,8 @@ public class RedBlackTree<K extends Comparable<K>,V> {
 		return h;
 	}
 
-	// Assuming that h is red and both h.right and h.right.left
-	// are black, make h.right or one of its children red.
 	private Node moveRedRight(Node h) {
-		// assert (h != null);
-		// assert isRed(h) && !isRed(h.right) && !isRed(h.right.left);
+
 		flipColors(h);
 		if (isRed(h.left.left)) {
 			h = rotateRight(h);
@@ -259,7 +243,7 @@ public class RedBlackTree<K extends Comparable<K>,V> {
 
 
 	private Node balance(Node h) {
-		// assert (h != null);
+
 
 		if (isRed(h.right))                      h = rotateLeft(h);
 		if (isRed(h.left) && isRed(h.left.left)) h = rotateRight(h);
