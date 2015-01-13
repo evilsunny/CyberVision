@@ -21,6 +21,7 @@ public class Client {
                     new ObjectOutputStream(socket.getOutputStream());
             objectOutputStream.writeObject(new MetaRequest(key));
             objectOutputStream.flush();
+            System.out.println(key);
             ObjectInputStream objectInputStream =
                     new ObjectInputStream(socket.getInputStream());
             metaResponse = (MetaResponse) objectInputStream.readObject();
@@ -32,7 +33,7 @@ public class Client {
 
     public void create(Object o) throws IOException, ClassNotFoundException {
         MetaResponse metaResponse = getMetaResponse(o.hashCode());
-
+        System.out.println(metaResponse.getHost());
         Socket socket = new Socket(metaResponse.getHost(),metaResponse.getPort());
 
 
@@ -44,14 +45,14 @@ public class Client {
                     new ObjectInputStream(socket.getInputStream());
 
             Response response = (Response) objectInputStream.readObject();
-            System.out.println(response);
+            System.out.println(response.getSTATUS());
 
     }
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
         Client c = new Client("localhost",3333);
-        c.create(666);
+        c.create("666");
 
 
     }

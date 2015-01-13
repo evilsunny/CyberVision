@@ -1,7 +1,9 @@
+import java.io.Serializable;
+
 /**
  * Created by alina on 12.01.15.
  */
-public class MetaRequest {
+public class MetaRequest implements Serializable {
 
     private int key;
 

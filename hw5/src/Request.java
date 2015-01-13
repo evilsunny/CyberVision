@@ -5,11 +5,19 @@ import java.io.Serializable;
  */
 public class Request  implements Serializable{
     private String COMMAND;
-    private  Object object;
+    private  Object item;
 
     Request(String s, Object o){
         this.COMMAND = s;
-        this.object = o;
+        this.item = o;
+    }
+
+    String getCOMMAND(){
+        return this.COMMAND;
+    }
+
+    Object getItem(){
+        return item;
     }
 
 }
