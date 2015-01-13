@@ -1,0 +1,17 @@
+
+public class SerialTest {
+
+	
+	SerialTest(){
+		Student s1 = new Student("Ann",20);
+		Student s2 = new Student("Alex",23);
+		Student s3 = new Student("Kate",40);
+		
+	}
+	
+	public static void main(String[] args) {
+		
+
+	}
+
+}
