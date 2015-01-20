@@ -1,9 +1,8 @@
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashSet;
+import java.util.Scanner;
 
 /**
  * Created by alina on 13.01.15.
@@ -15,6 +14,11 @@ public class SecondServer implements Runnable {
     public void run() {
         ServerSocket server;
         Socket fromclient;
+
+        HashSet<Object> dataBase;
+
+        dataBase = new HashSet<Object>();
+
         try {
             server = new ServerSocket(2002);
 
@@ -25,28 +29,61 @@ public class SecondServer implements Runnable {
             Request input;
 
             System.out.println("Wait");
-            Response response;
-            while (true) {
-                while ((input = (Request)ois.readObject()) != null) {
-                    if(input.getCOMMAND() == "CREATE"){
-                        FileOutputStream fout = new FileOutputStream("shard2.txt");
-                        ObjectOutputStream oos = new ObjectOutputStream(fout);
-                        oos.writeObject(input.getItem());
-                        response = new Response("CREATE","CREATED");
-                        ObjectOutputStream objectOutputStream =
-                                new ObjectOutputStream(fromclient.getOutputStream());
-                        objectOutputStream.writeObject(response);
-                        objectOutputStream.flush();
-                    }
 
-                }
-            }
+            Response response;
+            input = (Request)ois.readObject();
+            Scanner newscan= new Scanner(System.in);
+                do  {
+
+                    dataBase.add(input.getItem());
+                    response = prepareResponse(input);
+                    ObjectOutputStream objectOutputStream =
+                                new ObjectOutputStream(fromclient.getOutputStream());
+                    objectOutputStream.writeObject(response);
+                    objectOutputStream.flush();
+                    input = (Request)ois.readObject();
+                }while (newscan.next() != "stop2");
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        }finally {
+            FileOutputStream fout = null;
+            try {
+                fout = new FileOutputStream("shard2.txt");
+                ObjectOutputStream oos = new ObjectOutputStream(fout);
+                oos.writeObject(dataBase);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
 
+    }
+
+    static  Response prepareResponse(Request request) {
+        Response response = null;
+
+        switch (request.getCOMMAND()) {
+
+            case "CREATE": {
+                response = new Response("CREATE", "CREATED");
+                break;
+            }
+            case "READ": {
+                break;
+            }
+            case "UPDATE": {
+                break;
+            }
+            case "DELETE": {
+                break;
+            }
+        }
+
+        return response;
     }
 }

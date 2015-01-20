@@ -21,6 +21,7 @@ public class Client {
                     new ObjectOutputStream(socket.getOutputStream());
             objectOutputStream.writeObject(new MetaRequest(key));
             objectOutputStream.flush();
+           // objectOutputStream.reset();
             System.out.println(key);
             ObjectInputStream objectInputStream =
                     new ObjectInputStream(socket.getInputStream());
@@ -49,10 +50,16 @@ public class Client {
 
     }
 
+
+
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
         Client c = new Client("localhost",3333);
         c.create("666");
+        c.create("111");
+        c.create("112");
+
+        c.create(null);
 
 
     }
