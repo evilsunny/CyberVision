@@ -8,14 +8,15 @@ public class ShardServer implements Runnable {
 
 
     private static ConcurrentHashMap<Integer,Object> store = new ConcurrentHashMap<>();
-    private File file;
 
     int port;
     String host;
+    File file;
 
     ShardServer(String host, int port) throws IOException {
         this.port = port;
         this.host = host;
+
 
         if(port==2001){
             file = new File("shard1.txt");
@@ -24,17 +25,14 @@ public class ShardServer implements Runnable {
         }
 
 
+        if(file.exists()){
 
-        if(!file.exists()){
-            file.createNewFile();
-        }else {
-
-//            try (ObjectInputStream objectInputStream =
-//                         new ObjectInputStream(new FileInputStream(file))) {
-//                store = (ConcurrentHashMap<Integer, Object>) objectInputStream.readObject();
-//            } catch (IOException | ClassNotFoundException e) {
-//                e.printStackTrace();
-//            }
+            try (ObjectInputStream objectInputStream =
+                         new ObjectInputStream(new FileInputStream(file))) {
+                store = (ConcurrentHashMap<Integer, Object>) objectInputStream.readObject();
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
 
         }
     }
@@ -129,6 +127,17 @@ public class ShardServer implements Runnable {
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
+                        try {
+                            FileOutputStream fout = new FileOutputStream(file);
+                            ObjectOutputStream oos = new ObjectOutputStream(fout);
+                            oos.writeObject(store);
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        System.out.println("Buy 1 server");
+
                         break;
                     }
                 }

@@ -29,8 +29,8 @@
       <file leaf-file-name="Client.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.615942" vertical-offset="735" max-vertical-offset="2124">
-              <caret line="55" column="19" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.3478261" vertical-offset="0" max-vertical-offset="2124">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -186,6 +186,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/MySharding" />
   </component>
   <component name="RunManager" selected="Application.Client">
     <configuration default="false" name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -492,12 +493,12 @@
       <option name="number" value="Default" />
       <updated>1422030545036</updated>
       <workItem from="1422030549808" duration="11410000" />
-      <workItem from="1422217901298" duration="1217000" />
+      <workItem from="1422217901298" duration="3091000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12627000" />
+    <option name="totallyTimeSpent" value="14501000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="744" extended-state="6" />
@@ -681,8 +682,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.615942" vertical-offset="735" max-vertical-offset="2124">
-          <caret line="55" column="19" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.3478261" vertical-offset="0" max-vertical-offset="2124">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
